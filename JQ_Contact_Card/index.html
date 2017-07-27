@@ -17,29 +17,62 @@
 				form, #container{
 					height: 500px;
 					width: 321px;
-					border: 1px solid black;
 					display: inline-block;
 					vertical-align: top;
 				}
-				#container{
-					background-color: orange;
+				.card{
+					width: 95%;
+					height: 25%;
+					border: 2px solid black;
+					font-size: 100%;
+					box-sizing: border-box;
+				}
+				.hide{
+					display: none;
+				}
+				h1,
+				p{
+					text-align: center;
+
 				}
 		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	</head>
 	<body>
 	<form>
-		First Name: <input type = "text">
-		Last Name: <input type = "text">
-		Description: <textarea name = "description"></textarea>
+		First Name: <input class = "1st" type = "text">
+		Last Name: <input class = "last" type = "text">
+		Description: <textarea class = "describe" name = "description"></textarea>
 		<button type = "button"> Add User </button>
 	</form>
 	<div id = "container">
 	</div>
 	<script>
-		$('button').click(function(){
-			// console.log("hellow")  ----- to test to see if button works as intended
-		})
+		$(document).on('click',"button", function(){
+			// console.log("hellow")
+			var x = $(".1st").val();
+			var y = $(".last").val();
+
+			var z = $(".describe").val();
+
+		
+			$("#container").append(
+
+				"<div class = 'card'>" + 
+						"<h1>" + 
+							x + " " + y + 
+						"</h1>" + 
+						"<p>" + 
+						"Click for Description" + 
+						"</p><p class = 'hide'>" +
+						z +
+						"</p></div>"
+		
+				)
+			});
+		$(document).on('click',".card", function(){
+			$(this).children().toggle();
+			});
 	</script>
 	</body>
 </html>
